@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<html>
+    <head>
+        <title> Electronic Calculator</title>
+        <style>
+
+        body{
+            position: relative;
+            margin: 0 auto;
+            background-color: #CCCCCC;
+            font-family: Roboto Slab,sans-serif;
+            color: rgba(0,0,0,.7);
+        }
+
+
+        table{
+            margin: 0 auto;
+            border-spacing: 15px;
+            width: 400px;
+        }
+        td{
+            padding:10px;
+            text-align: center;
+            font-size: 25px;
+        }
+
+
+        .main {
+            position: relative;
+            margin: 30px auto;
+            width: 480px;
+            height: 600px; 
+            border-top-right-radius: 70%60px;
+            border-top-left-radius: 70%60px;
+            border-bottom-right-radius: 70%60px;
+            border-bottom-left-radius: 70%60px;
+            background-color: rgba(247,240,234,1);
+            box-shadow: 0px 0px 6px,
+            inset 0px 0px 6px;
+        }
+
+        .button{
+            width: 60px;
+            height: 40px;
+            margin: 10px;
+            border-top-right-radius: 80%15px;
+            border-top-left-radius: 80%15px;
+            border-bottom-right-radius: 80%15px;
+            border-bottom-left-radius: 80%15px;
+            background-color: rgba(204,204,204,0.8);
+            box-shadow: 0px 1px 2px 1px;
+        }
+
+        .button:hover{
+            background-color: rgba(40,40,40,0.8);
+            color: rgba(255,255,255,0.8);
+            -webkit-transition: background-color .1s color 0.1s;
+            -moz-transition: background-color .1s, color 0.1s;
+            -ms-transition: background-color .1s, color 0.1s;
+            -o-transition: background-color .1s, color 0.1s;
+            transition: background-color .1s, color 0.1s;
+        }
+
+        .desc{
+            font-size: 40px;
+            text-align: center;
+            padding: 5%;
+            font-family: 'Orbitron', 'sans-serif';
+            font-size: 25px;
+        }
+
+        .display{
+            width: 370px;
+            height: 70px;
+            margin: 5px auto;
+            border-radius: 5px;
+            background-color: rgba(202,199,178,0.8);
+            box-shadow: inset 0px 0px 10px 1px;
+            text-align: right;
+            font-size: 40px;
+            padding-right: 10px;
+            padding-top:10px;
+        }
+
+        .clear{
+            background-color: rgba(202,75,74,0.8);
+        }
+        .clear:hover{
+            background-color: rgba(220,20,20,0.8);
+        }
+
+
+        </style>
+       
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="col-xs-3"></div>
+                <div class ="col-xs-6">
+                    <div class="main">
+                        <div class="desc"> FCC Calculator</div>
+                        <div class="display"></div>
+                        <table>
+                            <tr> 
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td id="clear" class="clear button"> ON/C</td>
+                            </tr>
+                            <tr>
+                                <td id="seven" class="button"> 7</td>
+                                <td id="eight" class="button"> 8</td>
+                                <td id="nine" class="button"> 9</td>
+                                <td id="divide" class="button"> /</td>
+                            </tr>
+                            <tr>
+                                <td id="six"class="button">6</td>
+                                <td id="five"class="button">5</td>
+                                <td id="four" class="button">4</td>
+                                <td id="times" class="button">X</td>
+                            </tr>
+                            <tr>
+                                <td id="three" class="button">3</td>
+                                <td id="two" class="button">2</td>
+                                <td id="one" class="button">1</td>
+                                <td id="minus" class="button">-</td>
+                            </tr>
+                            <tr>
+                                <td id="zero" class="button">0</td>
+                                <td id="dot"class="button">.</td>
+                                <td id="equal" class="button">=</td>
+                                <td id="plus" class="button"> + </td>
+                            </tr>
+                        </table>
+                     </div>
+                </div>
+             <div class="col-xs-3"></div>
+        </div>
+    </body>
+    <script 
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+    </script>
+    <script>
+    var main = function(){
+
+        var strFirst = "";
+        var strSecond= "";
+        var operator = "";
+        var prev = false;
+
+        $(".display").html("0")
+
+        $("#zero").click(function(){
+            add(0);
+            display();
+            debug();
+        });
+
+        $("#one").click(function(){
+            add(1);
+            display();
+            debug();
+        });
+
+        $("#two").click(function(){
+             add(2);
+            display();
+            debug();
+        });
+
+        $("#three").click(function(){
+            add(3);
+            display();
+            debug();
+        });
+
+        $("#four").click(function(){
+           add(4);
+            display();
+            debug();
+        });
+
+        $("#five").click(function(){
+            add(5);
+            display();
+            debug();
+        });
+
+        $("#six").click(function(){
+            add(6);
+            display();
+            debug();
+        });
+        $("#seven").click(function(){
+            add(7);
+            display();
+            debug();
+        });
+        $("#eight").click(function(){
+            add(8);
+            display();
+            debug();
+        });
+        $("#nine").click(function(){
+            add(9);
+            display();
+            debug();
+        });
+        $("#dot").click(function(){
+            addDot();
+            display();
+             debug();
+        });
+        $("#clear").click(function(){
+            clear();
+            display();
+            debug();
+        });
+
+        $("#plus").click(function(){
+            addOperator("+");
+            if (isFull()) equal("+");
+            display();
+            debug();
+        });
+
+        $("#minus").click(function(){
+            addOperator("-");
+            if (isFull()) equal("-");
+            display();
+            debug();
+        });
+
+        $("#times").click(function(){
+            addOperator("x");
+            if (isFull()) equal("x");
+            display();
+            debug();
+        });
+
+        $("#divide").click(function(){
+            addOperator("/");
+            if (isFull()) equal("/");
+            display();
+            debug();
+        });
+
+
+        $('#equal').click(function(){
+            if (isFull())  equal("");
+            display();
+        });
+
+
+        var equal = function(opr){
+            var first = parseFloat(strFirst);
+            var second = parseFloat(strSecond);
+            var result;
+            switch(operator){
+                case "+": result = first + second;
+                            break;
+                case "-": result = first - second;
+                            break;
+                case "/": result = first/second;
+                            break;
+                case "x": result = first*second;
+                            break;
+            }
+            prev = true;
+            console.log("result is: " + result);
+            if (result%10===0) result = parseInt(result);
+            strFirst = result.toString();
+            strSecond="";
+            operator=opr;
+            
+        }
+
+        var display = function(){
+            str = strFirst + " " + operator + " " +strSecond;
+            if (isEmpty()) $(".display").html("0");
+            else $(".display").html(str.substring(0,15));
+        }
+
+        var add = function(num){
+            str = num.toString();
+            if (prev==false){
+                if (operator.length==0) {
+                    strFirst += str;
+                }
+                else {
+                    strSecond+=str;
+                }
+            } else{
+                if (operator.length==0){
+                    clear();
+                    strFirst +=str;
+                }
+                else{
+                    strSecond +=str;
+                }
+            }
+            
+        }
+
+        var addDot = function(){
+            if (operator.length===0){
+                if (strFirst.indexOf(".")==-1) strFirst+=".";
+            }
+            else {
+                if (strSecond.indexOf(".")==-1) strSecond+=".";
+            }
+        }
+
+        var addOperator = function(opr){
+            if (operator.length==0) {
+                operator=opr;
+            }
+        }
+
+        var clear = function(){
+            strFirst ="";
+            strSecond="";
+            operator="";
+            prev = false;
+        }
+
+        var isFull = function(){
+            if (strFirst.length==0) return false;
+            if (strSecond.length==0) return false;
+            if (operator.length==0) return false;
+            return true;
+        }
+        var isEmpty = function(){
+            if (strFirst.length==0 && strSecond.length==0 
+                && operator.length==0) return true;
+        }
+
+        var debug = function(){
+            console.log("first is: " + strFirst);
+            console.log("second is: " + strSecond);
+            console.log("operator is: " + operator);
+        }
+
+    }
+
+
+    $(document).ready(main);
+    </script>
+</html>
+
